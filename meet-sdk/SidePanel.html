@@ -1,18 +1,20 @@
-<html></html>
+<!DOCTYPE html>
+<html>
 <head>
     <title>Meet Add-on Side Panel</title>
-    <script src="./main.js"></script>
+    <script src="./dist/bundle.js"></script>
 </head>
 
 <body style="width: 100%; height: 100%; margin: 0">
     <div>This is the Add-on Side Panel. Only you can see this.</div>
-    <button id="start-activity">Launch Activity in Main Stage.</button>
+    <button id="start-activity">Launch Activity in Main Stage</button>
 
     <script>
         document.body.onload = () => {
-            // Library name (`helloWorld`) is defined in the webpack config.
-            // The function (`setUpAddon`) is defined in main.js.
-            helloWorld.setUpAddon();
+            console.log('Side panel loaded');
+            helloWorld.setUpAddon().catch(error => {
+                console.error('Failed to set up addon:', error);
+            });
         };
     </script>
 </body>
