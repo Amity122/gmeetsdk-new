@@ -1,4 +1,9 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>Meet Add-on Main Stage</title>
+    <script src="./dist/bundle.js"></script>
+</head>
 <body style="width: 100%; height: 100%; margin: 0">
     <div>
         This is the Add-on Main Stage. Everyone in the call can see this.
@@ -7,7 +12,14 @@
 
     <script>
         document.body.onload = () => {
-            helloWorld.initializeMainStage();
+            console.log('Main stage loaded');
+            if (typeof helloWorld === 'undefined') {
+                console.error('helloWorld library not loaded');
+                return;
+            }
+            helloWorld.initializeMainStage().catch(error => {
+                console.error('Failed to initialize main stage:', error);
+            });
         };
     </script>
 </body>
