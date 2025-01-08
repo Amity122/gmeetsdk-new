@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Meet Add-on Side Panel</title>
-    <script src="./dist/bundle.js"></script>
+    <script src="dist/bundle.js"></script>
 </head>
 
 <body style="width: 100%; height: 100%; margin: 0">
@@ -10,11 +10,15 @@
     <button id="start-activity">Launch Activity in Main Stage</button>
 
     <script>
-        document.body.onload = () => {
-            console.log('Side panel loaded');
-            helloWorld.setUpAddon().catch(error => {
-                console.error('Failed to set up addon:', error);
-            });
+        window.onload = () => {
+            console.log('Side panel loaded, checking for helloWorld:', window.helloWorld);
+            if (window.helloWorld && window.helloWorld.setUpAddon) {
+                window.helloWorld.setUpAddon().catch(error => {
+                    console.error('Failed to set up addon:', error);
+                });
+            } else {
+                console.error('helloWorld library not loaded correctly');
+            }
         };
     </script>
 </body>
