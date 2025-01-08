@@ -1,7 +1,7 @@
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
 const CLOUD_PROJECT_NUMBER = 'CLOUD_PROJECT_NUMBER';
-const MAIN_STAGE_URL = 'MAIN_STAGE_URL'
+const MAIN_STAGE_URL = 'https://amity122.github.io/gmeetsdk-new/meet-sdk/MainStage.html'
 
 /**
  * Prepares the Add-on Side Panel Client, and adds an event to launch the
