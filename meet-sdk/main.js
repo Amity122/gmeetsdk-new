@@ -1,6 +1,6 @@
 import { meet } from '@googleworkspace/meet-addons/meet.addons';
 
-const CLOUD_PROJECT_NUMBER = 'CLOUD_PROJECT_NUMBER';
+const CLOUD_PROJECT_NUMBER = '815165385709';
 const MAIN_STAGE_URL = 'https://amity122.github.io/gmeetsdk-new/meet-sdk/MainStage.html'
 
 /**
