@@ -2,24 +2,49 @@
 <html>
 <head>
     <title>Meet Add-on Main Stage</title>
-    <script src="./dist/bundle.js"></script>
+    <script src="dist/bundle.js"></script>
+    <style>
+        .error-message {
+            display: none;
+            color: #d32f2f;
+            padding: 16px;
+            text-align: center;
+        }
+        .content {
+            display: none;
+        }
+    </style>
 </head>
 <body style="width: 100%; height: 100%; margin: 0">
-    <div>
-        This is the Add-on Main Stage. Everyone in the call can see this.
+    <div id="error-message" class="error-message">
+        This page can only be accessed through Google Meet's Add-on framework.
     </div>
-    <div>Hello, world!</div>
+
+    <div id="content" class="content">
+        <div>This is the Add-on Main Stage. Everyone in the call can see this.</div>
+        <div>Hello, world!</div>
+    </div>
 
     <script>
-        document.body.onload = () => {
-            console.log('Main stage loaded');
-            if (typeof helloWorld === 'undefined') {
-                console.error('helloWorld library not loaded');
+        window.onload = () => {
+            console.log('Main stage loaded, checking for helloWorld:', window.helloWorld);
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            if (!urlParams.has('meet_sdk')) {
+                document.getElementById('error-message').style.display = 'block';
+                console.log('Not loaded in Meet context - missing meet_sdk parameter');
                 return;
             }
-            helloWorld.initializeMainStage().catch(error => {
-                console.error('Failed to initialize main stage:', error);
-            });
+
+            document.getElementById('content').style.display = 'block';
+            
+            if (window.helloWorld && window.helloWorld.initializeMainStage) {
+                window.helloWorld.initializeMainStage().catch(error => {
+                    console.error('Failed to initialize main stage:', error);
+                });
+            } else {
+                console.error('helloWorld library not loaded correctly');
+            }
         };
     </script>
 </body>

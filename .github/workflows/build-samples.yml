@@ -26,6 +26,9 @@ jobs:
         working-directory: meet-sdk
       - run: npm run build
         working-directory: meet-sdk
+      - name: Copy HTML files
+        run: |
+          cp meet-sdk/*.html meet-sdk/dist/
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
