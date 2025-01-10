@@ -10,8 +10,16 @@
             padding: 16px;
             text-align: center;
         }
+
         .content {
             display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .counter {
+            font-size: 48px;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -21,8 +29,9 @@
     </div>
 
     <div id="content" class="content">
-        <div>This is the Add-on Main Stage. Everyone in the call can see this.</div>
-        <div>Hello, world!</div>
+        <div>Counter Demo</div>
+        <div id="counter" class="counter">0</div>
+        <button onclick="window.helloWorld.incrementCounter()">Increment Counter</button>
     </div>
 
     <script>
