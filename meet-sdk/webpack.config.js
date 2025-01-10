@@ -5,7 +5,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    library: 'helloWorld'
+    library: {
+      name: 'helloWorld',
+      type: 'umd',
+      export: 'default'
+    }
   },
   mode: 'production',
   resolve: {

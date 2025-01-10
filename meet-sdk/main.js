@@ -5,6 +5,14 @@ const MAIN_STAGE_URL = 'https://amity122.github.io/gmeetsdk-new/meet-sdk/MainSta
 
 let counter = 0;
 
+const incrementCounter = () => {
+    counter++;
+    const counterElement = document.getElementById('counter');
+    if (counterElement) {
+        counterElement.textContent = counter.toString();
+    }
+};
+
 /**
  * Prepares the Add-on Side Panel Client, and adds an event to launch the
  * activity in the main stage when the main button is clicked.
@@ -38,14 +46,6 @@ export async function setUpAddon() {
     }
 }
 
-export function incrementCounter() {
-    counter++;
-    const counterElement = document.getElementById('counter');
-    if (counterElement) {
-        counterElement.textContent = counter.toString();
-    }
-}
-
 export async function initializeMainStage() {
     console.log('Initializing main stage...');
     try {
@@ -60,3 +60,9 @@ export async function initializeMainStage() {
         console.error('Error in initializeMainStage:', error);
     }
 }
+
+export default {
+    setUpAddon,
+    initializeMainStage,
+    incrementCounter
+};
